@@ -1,0 +1,230 @@
+/* styles/Visualizer.module.css */
+
+.mainContentWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xl);
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 2500px;
+  width: 100%;
+  padding: var(--spacing-lg);
+}
+
+.container {
+  background-color: var(--color-background-container);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 var(--spacing-sm) var(--spacing-lg) var(--color-shadow-light);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 350px;
+  max-width: 480px;
+  box-sizing: border-box;
+  border: 1px solid var(--color-border-default);
+  transition: background-color var(--transition-duration-normal)
+      var(--transition-ease),
+    border-color var(--transition-duration-normal) var(--transition-ease),
+    box-shadow var(--transition-duration-normal) var(--transition-ease);
+}
+
+.recursionContainer {
+  background-color: color-mix(
+    in srgb,
+    var(--color-background-container),
+    var(--color-highlight-recursion-unwinding-call) 10%
+  );
+  border-color: var(--color-highlight-recursion-unwinding-call);
+}
+
+.recursionCallingContainer {
+  background-color: color-mix(
+    in srgb,
+    var(--color-background-container),
+    var(--color-highlight-recursion-calling-active) 10%
+  );
+  border-color: var(--color-highlight-recursion-calling-active);
+}
+
+.controls {
+  margin-bottom: var(--spacing-xxl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.label {
+  /* Using a generic name as 'label' is an HTML tag */
+  margin-right: var(--spacing-xs);
+  font-size: 1.1em;
+  color: var(--color-text-secondary);
+}
+
+.inputNumber {
+  /* Using a generic name as 'input' is an HTML tag */
+  padding: var(--spacing-sm);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--border-radius-sm);
+  width: 70px;
+  text-align: center;
+  background-color: var(--color-background-container);
+  color: var(--color-text-default);
+  transition: border-color var(--transition-duration-normal)
+      var(--transition-ease),
+    background-color var(--transition-duration-normal) var(--transition-ease);
+}
+
+.inputNumber:focus {
+  outline: none;
+  border-color: var(--color-primary-accent);
+  box-shadow: 0 0 0 2px
+    color-mix(in srgb, var(--color-primary-accent), transparent 70%);
+}
+
+.button {
+  /* Using a generic name as 'button' is an HTML tag */
+  background-color: var(--color-primary-accent);
+  color: var(--color-text-inverse);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: var(--font-weight-medium);
+  transition: background-color var(--transition-duration-normal)
+      var(--transition-ease),
+    opacity var(--transition-duration-normal) var(--transition-ease);
+}
+
+.button:hover:not(:disabled) {
+  background-color: color-mix(in srgb, var(--color-primary-accent), black 15%);
+}
+
+.button:disabled {
+  background-color: var(--color-border-default);
+  color: var(--color-text-secondary);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.validationMessage {
+  color: var(--color-validation-error);
+  font-size: var(--font-size-small);
+  margin-top: var(--spacing-sm);
+  width: 100%;
+  text-align: center;
+}
+
+.loopStatusContainer {
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-default);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.loopVariable,
+.arrayLength {
+  color: var(--color-primary-accent);
+  transition: color var(--transition-duration-normal) var(--transition-ease);
+}
+
+.loopStatusText {
+  font-size: 0.7em;
+  color: var(--color-text-secondary);
+  margin-left: var(--spacing-xs);
+}
+
+.equalSignAnimateEnd {
+  /* Name for the animated equal sign class */
+  color: var(--color-element-completed);
+  font-size: var(--font-size-h1);
+  animation: bounceScale var(--transition-duration-slow) var(--transition-ease)
+    forwards;
+}
+
+/* @keyframes bounceScale (defined in design-system.css as it's global animation) */
+
+.arrayContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  min-height: 100px;
+  max-width: 800px;
+  width: 100%;
+}
+
+.arrayElement {
+  width: 80px;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-element-default-bg);
+  border: 1px solid var(--color-element-default-border);
+  border-radius: var(--border-radius-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-default);
+  transition: background-color var(--transition-duration-slow)
+      var(--transition-ease),
+    transform var(--transition-duration-fast) var(--transition-ease),
+    border-color var(--transition-duration-normal) var(--transition-ease),
+    color var(--transition-duration-normal) var(--transition-ease);
+  box-shadow: 0 2px 5px var(--color-shadow-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.arrayElementContent {
+  font-size: 2.2em;
+  line-height: 1;
+}
+
+.arrayIndex {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  margin-top: var(--spacing-xs);
+}
+
+.highlight {
+  background-color: var(--color-highlight-loop);
+  transform: scale(1.05);
+  border-color: color-mix(in srgb, var(--color-highlight-loop), black 20%);
+}
+
+.recursionElementCalling {
+  background-color: var(--color-highlight-recursion-unwinding-call);
+  border: 2px solid
+    color-mix(
+      in srgb,
+      var(--color-highlight-recursion-unwinding-call),
+      black 20%
+    );
+  transform: scale(1.05);
+}
+
+.recursionCallingElementActive {
+  background-color: var(--color-highlight-recursion-calling-active);
+  border: 2px solid
+    color-mix(
+      in srgb,
+      var(--color-highlight-recursion-calling-active),
+      black 20%
+    );
+  transform: scale(1.05);
+}
+
+.face {
+  background-color: var(--color-element-completed);
+  color: var(--color-text-default);
+  border-color: color-mix(in srgb, var(--color-element-completed), black 20%);
+}
