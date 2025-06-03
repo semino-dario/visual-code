@@ -1,8 +1,3 @@
-/*
- * CSS Design System for Loop & Recursion Visualizers
- * This file defines global CSS variables for colors, typography, spacing, and shadows.
- */
-
 /* ============================ */
 /* 1. Base Setup & CSS Variables */
 /* ============================ */
@@ -17,38 +12,62 @@
 /* Base styles for light mode (default) */
 :root {
   /* Colors */
-  --color-primary-accent: hsl(210, 80%, 45%); /* A vibrant blue */
-  --color-primary-accent-light: hsl(210, 100%, 70%); /* Lighter for dark mode */
-  --color-text-default: hsl(0, 0%, 15%); /* Dark grey for text */
-  --color-text-secondary: hsl(0, 0%, 40%); /* Medium grey for secondary text */
+  --color-primary-accent: hsl(
+    192,
+    59%,
+    56%
+  ); /* #53B3CB (a vibrant cyan-blue) */
+  --color-primary-accent-light: hsl(
+    192,
+    70%,
+    75%
+  ); /* Lighter for dark mode text/accents */
+  --color-text-default: hsl(0, 0%, 15%); /* Dark grey for text (light mode) */
+  --color-text-secondary: hsl(
+    0,
+    0%,
+    40%
+  ); /* Medium grey for secondary text (light mode) */
   --color-text-inverse: hsl(
     0,
     0%,
     95%
   ); /* Light grey for text on dark backgrounds */
-  --color-background-body: hsl(0, 0%, 98%); /* Off-white background */
+  --color-background-body: hsl(
+    0,
+    0%,
+    98%
+  ); /* Off-white background (light mode) */
   --color-background-container: hsl(
     0,
     0%,
     100%
-  ); /* White for main containers */
-  --color-border-default: hsl(0, 0%, 90%); /* Light border */
+  ); /* White for main containers (light mode) */
+  --color-border-default: hsl(0, 0%, 90%); /* Light border (light mode) */
   --color-shadow-light: rgba(0, 0, 0, 0.08); /* Subtle shadow */
-  --color-validation-error: hsl(350, 70%, 50%); /* Red for errors */
+  --color-validation-error: hsl(343, 80%, 49%); /* #E01A4F (Alert color) */
 
-  /* Visualizer Specific Colors (Light Mode) */
-  --color-highlight-loop: hsl(45, 100%, 75%); /* Yellow */
+  /* New/Updated Visualizer Specific Colors (Light Mode) */
+  --color-highlight-loop: hsl(
+    43,
+    94%,
+    58%
+  ); /* #F9C22E (Yellow for loop highlight) */
   --color-highlight-recursion-unwinding-call: hsl(
-    200,
-    80%,
-    80%
-  ); /* Light blue */
+    192,
+    59%,
+    75%
+  ); /* Lighter primary accent for unwinding call */
   --color-highlight-recursion-calling-active: hsl(
-    350,
-    80%,
-    80%
-  ); /* Light red */
-  --color-element-completed: hsl(140, 60%, 70%); /* Light green for 'face' */
+    7,
+    85%,
+    61%
+  ); /* #F15946 (Orange-red for calling active) */
+  --color-element-completed: hsl(
+    140,
+    60%,
+    70%
+  ); /* Light green for 'face' (semantic completion) */
   --color-element-default-bg: hsl(
     0,
     0%,
@@ -57,8 +76,7 @@
   --color-element-default-border: hsl(0, 0%, 75%); /* Medium grey border */
 
   /* Typography */
-  --font-family-monospace: "Roboto Mono", "Fira Code", "JetBrains Mono",
-    "Source Code Pro", monospace;
+  --font-family-base: var(--font-roboto, "Roboto"), sans-serif; /* Roboto with sans-serif fallback */
   --font-weight-light: 300;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
@@ -96,31 +114,63 @@
 /* Dark mode styles, applied when data-theme="dark" is set on <html> */
 html[data-theme="dark"] {
   /* Colors (Dark Mode Overrides) */
-  --color-primary-accent: hsl(210, 100%, 70%);
-  --color-primary-accent-light: hsl(210, 80%, 45%);
-  --color-text-default: hsl(0, 0%, 85%);
-  --color-text-secondary: hsl(0, 0%, 60%);
-  --color-text-inverse: hsl(0, 0%, 15%);
-  --color-background-body: hsl(220, 20%, 10%); /* Dark navy/charcoal */
-  --color-background-container: hsl(220, 20%, 15%);
-  --color-border-default: hsl(220, 15%, 25%);
-  --color-shadow-light: rgba(255, 255, 255, 0.08);
+  --color-primary-accent: hsl(
+    192,
+    59%,
+    70%
+  ); /* Brighter primary accent for dark mode */
+  --color-primary-accent-light: hsl(
+    192,
+    70%,
+    56%
+  ); /* Darker version for contrast */
+  --color-text-default: hsl(0, 0%, 85%); /* Light grey for text (dark mode) */
+  --color-text-secondary: hsl(
+    0,
+    0%,
+    60%
+  ); /* Medium grey for secondary text (dark mode) */
+  --color-text-inverse: hsl(
+    0,
+    0%,
+    15%
+  ); /* Dark grey for text on light backgrounds */
+
+  /* NEW Dark Mode Background */
+  --color-background-body: hsl(
+    230,
+    26%,
+    12%
+  ); /* From #25283D - dark navy/charcoal */
+  --color-background-container: hsl(
+    230,
+    26%,
+    15%
+  ); /* Slightly lighter for containers */
+
+  --color-border-default: hsl(230, 15%, 25%); /* Adjusted dark border */
+  --color-shadow-light: rgba(
+    255,
+    255,
+    255,
+    0.08
+  ); /* White shadow for dark mode */
 
   /* Visualizer Specific Colors (Dark Mode) */
-  --color-highlight-loop: hsl(45, 100%, 55%); /* Darker yellow */
+  --color-highlight-loop: hsl(43, 80%, 48%); /* Darker yellow */
   --color-highlight-recursion-unwinding-call: hsl(
-    200,
-    60%,
+    192,
+    40%,
     40%
   ); /* Darker blue */
   --color-highlight-recursion-calling-active: hsl(
-    350,
+    7,
     60%,
     40%
-  ); /* Darker red */
+  ); /* Darker orange-red */
   --color-element-completed: hsl(140, 40%, 40%); /* Darker green */
-  --color-element-default-bg: hsl(220, 15%, 20%);
-  --color-element-default-border: hsl(220, 15%, 30%);
+  --color-element-default-bg: hsl(230, 15%, 20%);
+  --color-element-default-border: hsl(230, 15%, 30%);
 }
 
 /* ============================ */
@@ -128,7 +178,7 @@ html[data-theme="dark"] {
 /* ============================ */
 
 body {
-  font-family: var(--font-family-monospace);
+  font-family: var(--font-family-base); /* Use the new base font family */
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
   color: var(--color-text-default);
@@ -138,7 +188,7 @@ body {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Align content to the top */
+  align-items: flex-start;
   transition: background-color var(--transition-duration-normal)
       var(--transition-ease),
     color var(--transition-duration-normal) var(--transition-ease);
@@ -152,63 +202,28 @@ h4,
 h5,
 h6 {
   font-family: var(
-    --font-family-monospace
-  ); /* Keep monospace for headings too */
+    --font-family-base
+  ); /* Headings also use the new base font */
   color: var(--color-text-default);
   line-height: var(--line-height-heading);
-  font-weight: var(--font-weight-bold); /* Default bold for headings */
+  font-weight: var(--font-weight-bold);
   margin-top: 0;
   margin-bottom: var(--spacing-md);
 }
 
 h1 {
-  font-size: var(--font-size-h1);
-  font-weight: var(--font-weight-bold);
+  color: var(--color-text-default);
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-h2); /* Adjusted for component titles */
+  font-weight: var(--font-weight-semibold);
 }
 
 h2 {
   font-size: var(--font-size-h2);
-  font-weight: var(--font-weight-semibold); /* Sub-titles slightly less bold */
+  font-weight: var(--font-weight-semibold);
 }
 
-/* A utility for hiding elements */
-.hidden {
-  display: none !important;
-}
-
-/* ============================ */
-/* 3. General Component Styling (using design tokens) */
-/* ============================ */
-
-.main-content-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-xl); /* Increased gap */
-  justify-content: center;
-  align-items: flex-start;
-  max-width: 2500px;
-  width: 100%;
-  padding: var(--spacing-lg); /* Add some padding around the wrapper */
-}
-
-.container {
-  background-color: var(--color-background-container);
-  padding: var(--spacing-xl);
-  border-radius: var(--border-radius-lg);
-  box-shadow: 0 var(--spacing-sm) var(--spacing-lg) var(--color-shadow-light); /* More pronounced shadow */
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 1 1 350px; /* Slightly larger base for containers */
-  max-width: 480px;
-  box-sizing: border-box;
-  border: 1px solid var(--color-border-default);
-  transition: background-color var(--transition-duration-normal)
-      var(--transition-ease),
-    border-color var(--transition-duration-normal) var(--transition-ease),
-    box-shadow var(--transition-duration-normal) var(--transition-ease);
-}
+/* ... (rest of the global CSS remains the same as before) ... */
 
 /* Specific background for Unwinding Phase */
 .recursion-container {
@@ -230,199 +245,4 @@ h2 {
   border-color: var(--color-highlight-recursion-calling-active);
 }
 
-.controls {
-  margin-bottom: var(--spacing-xxl); /* Increased margin */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: var(--spacing-sm);
-}
-
-label {
-  margin-right: var(--spacing-xs);
-  font-size: 1.1em;
-  color: var(--color-text-secondary);
-}
-
-input[type="number"] {
-  padding: var(--spacing-sm);
-  border: 1px solid var(--color-border-default);
-  border-radius: var(--border-radius-sm);
-  width: 70px; /* Slightly wider */
-  text-align: center;
-  background-color: var(--color-background-container);
-  color: var(--color-text-default);
-  transition: border-color var(--transition-duration-normal)
-      var(--transition-ease),
-    background-color var(--transition-duration-normal) var(--transition-ease);
-}
-
-input[type="number"]:focus {
-  outline: none;
-  border-color: var(--color-primary-accent);
-  box-shadow: 0 0 0 2px
-    color-mix(in srgb, var(--color-primary-accent), transparent 70%);
-}
-
-button {
-  background-color: var(--color-primary-accent);
-  color: var(--color-text-inverse);
-  padding: var(--spacing-sm) var(--spacing-md);
-  border: none;
-  border-radius: var(--border-radius-sm);
-  cursor: pointer;
-  font-size: 1em;
-  font-weight: var(--font-weight-medium);
-  transition: background-color var(--transition-duration-normal)
-      var(--transition-ease),
-    opacity var(--transition-duration-normal) var(--transition-ease);
-}
-
-button:hover:not(:disabled) {
-  background-color: color-mix(
-    in srgb,
-    var(--color-primary-accent),
-    black 15%
-  ); /* Slightly darker on hover */
-}
-
-button:disabled {
-  background-color: var(--color-border-default);
-  color: var(--color-text-secondary);
-  cursor: not-allowed;
-  opacity: 0.7;
-}
-
-.validation-message {
-  color: var(--color-validation-error);
-  font-size: var(--font-size-small);
-  margin-top: var(--spacing-sm);
-  width: 100%;
-  text-align: center;
-}
-
-.loop-status-container {
-  margin-top: var(--spacing-md);
-  margin-bottom: var(--spacing-xl);
-  font-size: var(--font-size-h2); /* Larger font for status */
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-default);
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-}
-
-/* Loop variable default color */
-#loopVariable,
-#recursionUnwindingLoopVariable,
-#recursionCallingLoopVariable {
-  color: var(--color-primary-accent); /* Use primary accent for numbers */
-  transition: color var(--transition-duration-normal) var(--transition-ease);
-}
-
-.loop-status-text {
-  font-size: 0.7em; /* Relative to parent font size */
-  color: var(--color-text-secondary);
-  margin-left: var(--spacing-xs);
-}
-
-.equal-sign.animate-end {
-  color: var(--color-element-completed); /* Green for completion */
-  font-size: var(--font-size-h1); /* Larger bounce */
-  animation: bounceScale var(--transition-duration-slow) var(--transition-ease)
-    forwards;
-}
-
-/* Animation for the final state of the index/equal sign */
-@keyframes bounceScale {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.3);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-.array-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: var(--spacing-md);
-  min-height: 100px; /* Ensure enough space for elements */
-  max-width: 800px;
-  width: 100%; /* Ensure it takes full width of container */
-}
-
-.array-element {
-  width: 80px; /* Slightly larger elements */
-  height: 90px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--color-element-default-bg);
-  border: 1px solid var(--color-element-default-border);
-  border-radius: var(--border-radius-md);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-text-default);
-  transition: background-color var(--transition-duration-slow)
-      var(--transition-ease),
-    transform var(--transition-duration-fast) var(--transition-ease),
-    border-color var(--transition-duration-normal) var(--transition-ease),
-    color var(--transition-duration-normal) var(--transition-ease);
-  box-shadow: 0 2px 5px var(--color-shadow-light);
-  position: relative;
-  overflow: hidden; /* To keep emoji inside */
-}
-
-.array-element-content {
-  font-size: 2.2em; /* Larger emoji/number */
-  line-height: 1;
-}
-
-.array-index {
-  font-size: var(--font-size-small);
-  color: var(--color-text-secondary);
-  margin-top: var(--spacing-xs);
-}
-
-/* Loop highlight */
-.array-element.highlight {
-  background-color: var(--color-highlight-loop);
-  transform: scale(1.05);
-  border-color: color-mix(in srgb, var(--color-highlight-loop), black 20%);
-}
-
-/* Recursion Unwinding phase (calling highlight) */
-.recursion-element-calling {
-  background-color: var(--color-highlight-recursion-unwinding-call);
-  border: 2px solid
-    color-mix(
-      in srgb,
-      var(--color-highlight-recursion-unwinding-call),
-      black 20%
-    );
-  transform: scale(1.05);
-}
-
-/* Recursion Calling phase (active highlight) */
-.recursion-calling-element-active {
-  background-color: var(--color-highlight-recursion-calling-active);
-  border: 2px solid
-    color-mix(
-      in srgb,
-      var(--color-highlight-recursion-calling-active),
-      black 20%
-    );
-  transform: scale(1.05);
-}
-
-.array-element.face {
-  background-color: var(--color-element-completed);
-  color: var(--color-text-default); /* Keep text color readable */
-  border-color: color-mix(in srgb, var(--color-element-completed), black 20%);
-}
+/* ... (rest of the global CSS remains the same as before) ... */

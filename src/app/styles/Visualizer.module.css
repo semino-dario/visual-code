@@ -1,12 +1,10 @@
-/* styles/Visualizer.module.css */
-
 .mainContentWrapper {
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-xl);
   justify-content: center;
   align-items: flex-start;
-  max-width: 2500px;
+  max-width: 2500px; /* Adjusted for three columns */
   width: 100%;
   padding: var(--spacing-lg);
 }
@@ -20,8 +18,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 1 1 350px;
-  max-width: 480px;
+  flex: 1 1 350px; /* Allows containers to grow/shrink, with a minimum width of 350px */
+  max-width: 480px; /* Max width for each container */
   box-sizing: border-box;
   border: 1px solid var(--color-border-default);
   transition: background-color var(--transition-duration-normal)
@@ -58,14 +56,12 @@
 }
 
 .label {
-  /* Using a generic name as 'label' is an HTML tag */
   margin-right: var(--spacing-xs);
   font-size: 1.1em;
   color: var(--color-text-secondary);
 }
 
 .inputNumber {
-  /* Using a generic name as 'input' is an HTML tag */
   padding: var(--spacing-sm);
   border: 1px solid var(--color-border-default);
   border-radius: var(--border-radius-sm);
@@ -86,7 +82,6 @@
 }
 
 .button {
-  /* Using a generic name as 'button' is an HTML tag */
   background-color: var(--color-primary-accent);
   color: var(--color-text-inverse);
   padding: var(--spacing-sm) var(--spacing-md);
@@ -119,6 +114,10 @@
   text-align: center;
 }
 
+.hidden {
+  display: none !important;
+}
+
 .loopStatusContainer {
   margin-top: var(--spacing-md);
   margin-bottom: var(--spacing-xl);
@@ -130,8 +129,8 @@
   gap: var(--spacing-sm);
 }
 
-.loopVariable,
-.arrayLength {
+.loopVariable {
+  /* Combined styles for all loop variables */
   color: var(--color-primary-accent);
   transition: color var(--transition-duration-normal) var(--transition-ease);
 }
@@ -142,15 +141,32 @@
   margin-left: var(--spacing-xs);
 }
 
+.equalSign {
+  /* Base style for equal sign */
+  color: var(--color-text-default);
+  transition: color var(--transition-duration-normal) var(--transition-ease),
+    font-size var(--transition-duration-normal) var(--transition-ease);
+}
+
 .equalSignAnimateEnd {
-  /* Name for the animated equal sign class */
   color: var(--color-element-completed);
   font-size: var(--font-size-h1);
   animation: bounceScale var(--transition-duration-slow) var(--transition-ease)
     forwards;
 }
 
-/* @keyframes bounceScale (defined in design-system.css as it's global animation) */
+/* Animation for the final state of the index/equal sign */
+@keyframes bounceScale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 
 .arrayContainer {
   display: flex;
@@ -158,7 +174,7 @@
   flex-wrap: wrap;
   gap: var(--spacing-md);
   min-height: 100px;
-  max-width: 800px;
+  max-width: 800px; /* Still allows wider display if a single container fills it */
   width: 100%;
 }
 
@@ -195,12 +211,14 @@
   margin-top: var(--spacing-xs);
 }
 
+/* Loop highlight */
 .highlight {
   background-color: var(--color-highlight-loop);
   transform: scale(1.05);
   border-color: color-mix(in srgb, var(--color-highlight-loop), black 20%);
 }
 
+/* Recursion Unwinding phase (calling highlight) */
 .recursionElementCalling {
   background-color: var(--color-highlight-recursion-unwinding-call);
   border: 2px solid
@@ -212,6 +230,7 @@
   transform: scale(1.05);
 }
 
+/* Recursion Calling phase (active highlight) */
 .recursionCallingElementActive {
   background-color: var(--color-highlight-recursion-calling-active);
   border: 2px solid

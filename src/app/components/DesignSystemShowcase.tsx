@@ -1,4 +1,4 @@
-"use client"; // Required if using App Router and useState/useEffect
+"use client";
 
 import React, { useState, useEffect } from "react";
 import styles from "../styles/Visualizer.module.css"; // Import the module CSS for component styles
@@ -6,7 +6,6 @@ import styles from "../styles/Visualizer.module.css"; // Import the module CSS f
 const DesignSystemShowcase: React.FC = () => {
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
-  // Effect to read initial theme from localStorage or system preference
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
     if (
@@ -22,7 +21,6 @@ const DesignSystemShowcase: React.FC = () => {
     }
   }, []);
 
-  // Function to toggle theme
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
@@ -68,16 +66,19 @@ const DesignSystemShowcase: React.FC = () => {
             },
             { name: "Border Default", var: "--color-border-default" },
             { name: "Shadow Light", var: "--color-shadow-light" },
-            { name: "Validation Error", var: "--color-validation-error" },
-            { name: "Highlight Loop", var: "--color-highlight-loop" },
+            {
+              name: "Validation Error (Alert)",
+              var: "--color-validation-error",
+            }, // Updated name
+            { name: "Highlight Loop (#F9C22E)", var: "--color-highlight-loop" }, // Added hex for clarity
             {
               name: "Highlight Unwinding",
               var: "--color-highlight-recursion-unwinding-call",
             },
             {
-              name: "Highlight Calling",
+              name: "Highlight Calling (#F15946)",
               var: "--color-highlight-recursion-calling-active",
-            },
+            }, // Added hex for clarity
             { name: "Element Completed", var: "--color-element-completed" },
             { name: "Element Default Bg", var: "--color-element-default-bg" },
             {
@@ -98,10 +99,20 @@ const DesignSystemShowcase: React.FC = () => {
                 justifyContent: "flex-end",
                 alignItems: "flex-start",
                 fontSize: "var(--font-size-small)",
+                // Adjust text color on swatches for readability, especially for light colors
                 color:
-                  color.name.includes("Text") || color.name.includes("Inverse")
+                  color.name.includes("Text") ||
+                  color.name.includes("Inverse") ||
+                  color.name.includes("Background") ||
+                  color.name.includes("Shadow")
                     ? "inherit"
                     : theme === "light"
+                    ? color.name.includes("Primary Accent") ||
+                      color.name.includes("Highlight")
+                      ? "var(--color-text-inverse)"
+                      : "var(--color-text-default)"
+                    : color.name.includes("Primary Accent") ||
+                      color.name.includes("Highlight")
                     ? "var(--color-text-default)"
                     : "var(--color-text-inverse)",
                 boxShadow: "var(--color-shadow-light)",
@@ -117,10 +128,7 @@ const DesignSystemShowcase: React.FC = () => {
                       : "rgba(0,0,0,0.7)",
                   padding: "2px 4px",
                   borderRadius: "var(--border-radius-sm)",
-                  color:
-                    theme === "light"
-                      ? "var(--color-text-default)"
-                      : "var(--color-text-inverse)",
+                  color: "inherit", // Inherit color from parent div
                 }}
               >
                 {color.name}
@@ -144,7 +152,7 @@ const DesignSystemShowcase: React.FC = () => {
           <p>
             This is a paragraph of base text. It uses `var(--font-size-base)`
             and `var(--line-height-base)`. The font family is
-            `var(--font-family-monospace)`.
+            `var(--font-family-base)`.
           </p>
           <p style={{ color: "var(--color-text-secondary)" }}>
             This is secondary text, good for captions or less prominent
