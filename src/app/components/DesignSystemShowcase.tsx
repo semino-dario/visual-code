@@ -35,6 +35,7 @@ const DesignSystemShowcase: React.FC = () => {
         style={{ marginBottom: "var(--spacing-xxl)" }}
       >
         <h2>Design System Showcase</h2>
+
         <button
           className={styles.button}
           onClick={toggleTheme}

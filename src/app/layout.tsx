@@ -2,6 +2,7 @@
 import "./styles/design-system.css";
 import { ReactNode } from "react";
 import { Roboto } from "next/font/google"; // Import Roboto
+import ThemeSetter from "./components/ThemeSetter";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "600", "700"],
@@ -21,9 +22,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    // Apply the font variable directly to the html tag or a wrapper
     <html lang="en" className={`${roboto.variable}`} suppressHydrationWarning>
-      <body>{children}</body>
+      <body>
+        <ThemeSetter />
+        {children}
+      </body>
     </html>
   );
 }

@@ -10,7 +10,6 @@ import styles from "../styles/Visualizer.module.css";
 const RecursiveCallingVisualizer: React.FC = () => {
   const {
     inputSize,
-    validationMessage,
     showVisualizer,
     isButtonDisabled,
     elements,
@@ -96,7 +95,7 @@ const RecursiveCallingVisualizer: React.FC = () => {
 
   return (
     <div className={`${styles.container} ${styles.recursionCallingContainer}`}>
-      <h1>Recursive Visualizer - Calling Phase</h1>
+      <h1>Recursion - Calling Phase</h1>
       <div className={styles.controls}>
         <label htmlFor="recursionCallingArraySize" className={styles.label}>
           Enter array size ({minIterations}-{maxIterations}):
@@ -118,14 +117,6 @@ const RecursiveCallingVisualizer: React.FC = () => {
         >
           Start Animation
         </button>
-        <span
-          id="recursionCallingValidationMessage"
-          className={`${styles.validationMessage} ${
-            showVisualizer ? styles.hidden : ""
-          }`}
-        >
-          {validationMessage}
-        </span>
       </div>
 
       <div

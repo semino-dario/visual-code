@@ -10,7 +10,6 @@ import styles from "../styles/Visualizer.module.css";
 const RecursiveUnwindingVisualizer: React.FC = () => {
   const {
     inputSize,
-    validationMessage,
     showVisualizer,
     isButtonDisabled,
     elements,
@@ -92,7 +91,7 @@ const RecursiveUnwindingVisualizer: React.FC = () => {
 
   return (
     <div className={`${styles.container} ${styles.recursionContainer}`}>
-      <h1>Recursive Visualizer - Unwinding Phase</h1>
+      <h1>Recursion - Unwinding Phase</h1>
       <div className={styles.controls}>
         <label htmlFor="recursionUnwindingArraySize" className={styles.label}>
           Enter array size ({minIterations}-{maxIterations}):
@@ -114,14 +113,6 @@ const RecursiveUnwindingVisualizer: React.FC = () => {
         >
           Start Animation
         </button>
-        <span
-          id="recursionUnwindingValidationMessage"
-          className={`${styles.validationMessage} ${
-            showVisualizer ? styles.hidden : ""
-          }`}
-        >
-          {validationMessage}
-        </span>
       </div>
 
       <div

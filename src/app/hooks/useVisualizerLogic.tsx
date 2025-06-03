@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback, useRef } from "react";
 
 interface VisualizerState {
   inputSize: string;
-  validationMessage: string;
   showVisualizer: boolean;
   isButtonDisabled: boolean;
   currentVariable: number;
@@ -38,7 +37,6 @@ export const useVisualizerLogic = ({
 }: UseVisualizerLogicProps) => {
   const [state, setState] = useState<VisualizerState>({
     inputSize: "",
-    validationMessage: "Value should be between 1 and 10.",
     showVisualizer: false,
     isButtonDisabled: true,
     currentVariable: 0,
@@ -77,7 +75,6 @@ export const useVisualizerLogic = ({
 
       let newState: Partial<VisualizerState> = {
         inputSize: inputValue,
-        validationMessage: "Value should be between 1 and 10.",
         showVisualizer: false,
         isButtonDisabled: true,
         elements: [], // Clear elements on any input change
@@ -99,10 +96,9 @@ export const useVisualizerLogic = ({
         createInitialElements(parsedSize); // Initialize elements for valid input
       } else {
         // Invalid input
-        newState.validationMessage = "Value should be between 1 and 10.";
         newState.showVisualizer = false;
         newState.isButtonDisabled = true;
-        newState.inputSize = ""; // Erase invalid input
+        return;
       }
       setState((prevState) => ({ ...prevState, ...newState }));
     },

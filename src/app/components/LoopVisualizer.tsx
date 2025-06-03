@@ -10,7 +10,6 @@ import styles from "../styles/Visualizer.module.css";
 const LoopVisualizer: React.FC = () => {
   const {
     inputSize,
-    validationMessage,
     showVisualizer,
     isButtonDisabled,
     elements,
@@ -79,7 +78,7 @@ const LoopVisualizer: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <h1>Loop Visualizer</h1>
+      <h1>Loop</h1>
       <div className={styles.controls}>
         <label htmlFor="arraySize" className={styles.label}>
           Enter array size ({minIterations}-{maxIterations}):
@@ -101,14 +100,6 @@ const LoopVisualizer: React.FC = () => {
         >
           Start Animation
         </button>
-        <span
-          id="validationMessage"
-          className={`${styles.validationMessage} ${
-            showVisualizer ? styles.hidden : ""
-          }`}
-        >
-          {validationMessage}
-        </span>
       </div>
 
       <div
