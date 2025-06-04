@@ -1,6 +1,5 @@
 // app/layout.tsx
 import "./styles/design-system.css";
-import { ReactNode } from "react";
 import { Roboto } from "next/font/google"; // Import Roboto
 import ThemeSetter from "./components/ThemeSetter";
 

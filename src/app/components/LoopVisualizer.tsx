@@ -29,7 +29,7 @@ const LoopVisualizer: React.FC = () => {
   } = useVisualizerLogic({
     minIterations: 1,
     maxIterations: 10,
-    initialVariableText: (size) => 0, // Loop starts at 0
+    initialVariableText: () => 0, // Loop starts at 0
     idPrefix: "loop",
   });
 

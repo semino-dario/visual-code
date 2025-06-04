@@ -44,7 +44,6 @@ const RecursiveCallingVisualizer: React.FC = () => {
     }
 
     updateCurrentVariable(index); // Update 'Stack Index' display
-    const currentElement = elementsArray[index];
 
     updateElementStatus(index, "recursionCallingActive"); // Highlight as call is active
     await delay(DELAY_MS);

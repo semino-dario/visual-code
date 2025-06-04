@@ -55,7 +55,7 @@ export const useVisualizerLogic = ({
       const newElements = Array.from({ length: size }, (_, i) => ({
         content: i + 1,
         index: i,
-        status: "initial" as "initial",
+        status: "initial" as const,
       }));
       setState((prevState) => ({
         ...prevState,
@@ -73,7 +73,7 @@ export const useVisualizerLogic = ({
       const inputValue = e.target.value;
       const parsedSize = parseInt(inputValue, 10);
 
-      let newState: Partial<VisualizerState> = {
+      const newState: Partial<VisualizerState> = {
         inputSize: inputValue,
         showVisualizer: false,
         isButtonDisabled: true,

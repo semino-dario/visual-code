@@ -24,7 +24,6 @@ const RecursiveUnwindingVisualizer: React.FC = () => {
     arrayLengthRef, // Still need ref for hiding
     DELAY_MS,
     ACTION_DELAY_MS,
-    HIGHLIGHT_REMOVE_DELAY_MS,
     minIterations,
     maxIterations,
   } = useVisualizerLogic({
