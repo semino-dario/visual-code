@@ -6,7 +6,6 @@ import { delay } from "../utils/animation";
 import ArrayElement from "./ArrayElement";
 import styles from "../styles/GlobalStyles.module.css";
 import VisualizerContainer from "./VisualizerContainer";
-import CodeExample from "./CodeExample";
 import VisualizerExtras from "./VisualizerExtras";
 
 const LoopVisualizer: React.FC = () => {
@@ -77,18 +76,6 @@ const LoopVisualizer: React.FC = () => {
     if (inputElement) inputElement.disabled = false;
     if (buttonElement) buttonElement.disabled = false;
   };
-
-  const jsCode = `
-  function factorial(n) {
-      if (n === 0) {
-          return 1;
-      }
-      return n * factorial(n - 1);
-  }
-  
-  const num = 5;
-  console.log(\`Factorial of \${num} is \${factorial(num)}\`);
-      `;
 
   return (
     <div>

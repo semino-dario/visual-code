@@ -10,14 +10,12 @@ interface CodeExampleProps {
   code: string;
   language: string;
   showLineNumbers?: boolean;
-  title?: string;
 }
 
 const CodeExample: React.FC<CodeExampleProps> = ({
   code,
   language,
   showLineNumbers = true,
-  title,
 }) => {
   const [copied, setCopied] = useState(false);
   const [currentTheme, setCurrentTheme] = useState(atomDark);
