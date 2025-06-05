@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, act } from "react";
+import React, { useState, useEffect } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark, vs } from "react-syntax-highlighter/dist/esm/styles/prism";
 import copy from "copy-to-clipboard";
@@ -21,7 +21,6 @@ const CodeExample: React.FC<CodeExampleProps> = ({
 }) => {
   const [copied, setCopied] = useState(false);
   const [currentTheme, setCurrentTheme] = useState(atomDark);
-  const [active, setActive] = useState(false);
 
   useEffect(() => {
     const checkTheme = () => {
