@@ -1,11 +1,12 @@
-// components/LoopVisualizer.tsx
 "use client";
 
 import React from "react";
 import { useVisualizerLogic } from "../hooks/useVisualizerLogic";
 import { delay } from "../utils/animation";
 import ArrayElement from "./ArrayElement";
-import styles from "../styles/Visualizer.module.css";
+import styles from "../styles/GlobalStyles.module.css";
+import VisualizerContainer from "./VisualizerContainer";
+import CodeExample from "./CodeExample";
 
 const LoopVisualizer: React.FC = () => {
   const {
@@ -76,74 +77,92 @@ const LoopVisualizer: React.FC = () => {
     if (buttonElement) buttonElement.disabled = false;
   };
 
+  const jsCode = `
+  function factorial(n) {
+      if (n === 0) {
+          return 1;
+      }
+      return n * factorial(n - 1);
+  }
+  
+  const num = 5;
+  console.log(\`Factorial of \${num} is \${factorial(num)}\`);
+      `;
+
   return (
-    <div className={styles.container}>
-      <h1>Loop</h1>
-      <div className={styles.controls}>
-        <label htmlFor="arraySize" className={styles.label}>
-          Enter array size ({minIterations}-{maxIterations}):
-        </label>
-        <input
-          type="number"
-          id="arraySize"
-          min={minIterations}
-          max={maxIterations}
-          value={inputSize}
-          onChange={handleInputChange}
-          className={styles.inputNumber}
-        />
-        <button
-          id="startButton"
-          onClick={startAnimation}
-          disabled={isButtonDisabled}
-          className={styles.button}
-        >
-          Start Animation
-        </button>
-      </div>
-
-      <div
-        className={`${styles.loopStatusContainer} ${
-          !showVisualizer && styles.hidden
-        }`}
-      >
-        <span className={styles.loopStatusText}>Variable</span>
-        <span
-          id="loopVariable"
-          ref={loopVariableRef}
-          className={styles.loopVariable}
-        >
-          0
-        </span>
-        <span id="equalSign" ref={equalSignRef} className={styles.equalSign}>
-          =
-        </span>
-        <span
-          id="arrayLength"
-          ref={arrayLengthRef}
-          className={styles.arrayLength}
-        >
-          0
-        </span>
-        <span className={styles.loopStatusText}>length</span>
-      </div>
-
-      <div
-        id="arrayContainer"
-        className={`${styles.arrayContainer} ${
-          !showVisualizer && styles.hidden
-        }`}
-      >
-        {elements.map((el) => (
-          <ArrayElement
-            key={el.index}
-            content={el.content}
-            index={el.index}
-            highlight={el.status === "highlight"}
-            face={el.status === "face"}
+    <div>
+      <VisualizerContainer title={"Loop Visualizer"}>
+        <div className={styles.controls}>
+          <label htmlFor="arraySize" className={styles.label}>
+            Enter array size ({minIterations}-{maxIterations}):
+          </label>
+          <input
+            type="number"
+            id="arraySize"
+            min={minIterations}
+            max={maxIterations}
+            value={inputSize}
+            onChange={handleInputChange}
+            className={styles.inputNumber}
           />
-        ))}
-      </div>
+          <button
+            id="startButton"
+            onClick={startAnimation}
+            disabled={isButtonDisabled}
+            className={styles.button}
+          >
+            Start Animation
+          </button>
+        </div>
+
+        <div
+          className={`${styles.loopStatusContainer} ${
+            !showVisualizer && styles.hidden
+          }`}
+        >
+          <span className={styles.loopStatusText}>Variable</span>
+          <span
+            id="loopVariable"
+            ref={loopVariableRef}
+            className={styles.loopVariable}
+          >
+            0
+          </span>
+          <span id="equalSign" ref={equalSignRef} className={styles.equalSign}>
+            =
+          </span>
+          <span
+            id="arrayLength"
+            ref={arrayLengthRef}
+            className={styles.arrayLength}
+          >
+            0
+          </span>
+          <span className={styles.loopStatusText}>length</span>
+        </div>
+
+        <div
+          id="arrayContainer"
+          className={`${styles.arrayContainer} ${
+            !showVisualizer && styles.hidden
+          }`}
+        >
+          {elements.map((el) => (
+            <ArrayElement
+              key={el.index}
+              content={el.content}
+              index={el.index}
+              highlight={el.status === "highlight"}
+              face={el.status === "face"}
+            />
+          ))}
+        </div>
+      </VisualizerContainer>
+      <CodeExample
+        code={jsCode}
+        language="javascript"
+        title="Loop Example Code"
+      />
     </div>
   );
 };

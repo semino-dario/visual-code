@@ -2,7 +2,7 @@
 "use client"; // This component must be a client component because it interacts with the DOM and localStorage
 
 import React, { useState, useEffect } from "react";
-import styles from "../styles/Visualizer.module.css"; // Assuming button styles are here
+import styles from "../styles/GlobalStyles.module.css"; // Assuming button styles are here
 
 const ThemeToggleButton: React.FC = () => {
   const [theme, setTheme] = useState<"light" | "dark">("light");

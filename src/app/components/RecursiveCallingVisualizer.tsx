@@ -5,7 +5,7 @@ import React from "react";
 import { useVisualizerLogic } from "../hooks/useVisualizerLogic";
 import { delay } from "../utils/animation";
 import ArrayElement from "./ArrayElement";
-import styles from "../styles/Visualizer.module.css";
+import styles from "../styles/GlobalStyles.module.css";
 
 const RecursiveCallingVisualizer: React.FC = () => {
   const {

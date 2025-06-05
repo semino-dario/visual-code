@@ -1,6 +1,6 @@
 // components/ArrayElement.tsx
 import React from "react";
-import styles from "../styles/Visualizer.module.css";
+import styles from "../styles/GlobalStyles.module.css";
 
 interface ArrayElementProps {
   content: string | number;

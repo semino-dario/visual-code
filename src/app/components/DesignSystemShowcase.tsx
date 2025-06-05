@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import styles from "../styles/Visualizer.module.css"; // Import the module CSS for component styles
+import styles from "../styles/GlobalStyles.module.css"; // Import the module CSS for component styles
 
 const DesignSystemShowcase: React.FC = () => {
   const [theme, setTheme] = useState<"light" | "dark">("light");
