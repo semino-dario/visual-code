@@ -1,3 +1,5 @@
+@import "./CodeExample.module.css";
+
 .mainContentWrapper {
   display: flex;
   flex-direction: column;

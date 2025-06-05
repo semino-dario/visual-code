@@ -7,6 +7,7 @@ import ArrayElement from "./ArrayElement";
 import styles from "../styles/GlobalStyles.module.css";
 import VisualizerContainer from "./VisualizerContainer";
 import CodeExample from "./CodeExample";
+import VisualizerExtras from "./VisualizerExtras";
 
 const LoopVisualizer: React.FC = () => {
   const {
@@ -158,11 +159,7 @@ const LoopVisualizer: React.FC = () => {
           ))}
         </div>
       </VisualizerContainer>
-      <CodeExample
-        code={jsCode}
-        language="javascript"
-        title="Loop Example Code"
-      />
+      <VisualizerExtras />
     </div>
   );
 };

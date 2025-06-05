@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark, vs } from "react-syntax-highlighter/dist/esm/styles/prism";
 import copy from "copy-to-clipboard";
-import styles from "../styles/CodeExample.module.css";
+import codeStyles from "../styles/CodeExample.module.css";
 
 interface CodeExampleProps {
   code: string;
@@ -49,9 +49,8 @@ const CodeExample: React.FC<CodeExampleProps> = ({
   };
 
   return (
-    <div className={styles.codeContainer}>
-      {title && <div className={styles.codeTitle}>{title}</div>}
-      <button className={styles.copyButton} onClick={handleCopy}>
+    <div className={codeStyles.codeContainer}>
+      <button className={codeStyles.copyButton} onClick={handleCopy}>
         {copied ? "Copied!" : "Copy"}
       </button>
       <SyntaxHighlighter
@@ -59,7 +58,7 @@ const CodeExample: React.FC<CodeExampleProps> = ({
         style={currentTheme} // Apply the dynamically selected theme
         showLineNumbers={showLineNumbers}
         wrapLines={true} // Wraps long lines
-        className={styles.syntaxHighlighter} // Apply additional styles from CSS Module
+        className={codeStyles.syntaxHighlighter} // Apply additional codeStyles from CSS Module
         customStyle={{
           padding: "var(--spacing-md)", // Override default padding if needed
           borderRadius: "var(--border-radius-md)",
