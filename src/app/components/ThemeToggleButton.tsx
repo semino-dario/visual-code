@@ -33,7 +33,7 @@ const ThemeToggleButton: React.FC = () => {
 
   return (
     <button
-      className={styles.button} // Using the button style from Visualizer.module.css
+      className={`${styles.button} ${styles.buttonMode}`} // Using the button style from Visualizer.module.css
       onClick={toggleTheme}
       // Add a margin to position it nicely, or let parent handle positioning
       style={{ marginBottom: "var(--spacing-lg)" }}

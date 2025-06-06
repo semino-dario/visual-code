@@ -1,5 +1,6 @@
 .buttonContent {
   width: 100%;
+  max-width: 480px;
   padding: var(--spacing-xs) var(--spacing-md);
   background-color: var(--color-background-container);
   color: var(--color-text-default);
